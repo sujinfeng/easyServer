@@ -1,0 +1,5 @@
+ mkdir nodeServer //新建项目文件夹
+ 
+ npm install  express  //引入express插件
+ 
+ npm install body-parser  //引入数据格式解析插件
