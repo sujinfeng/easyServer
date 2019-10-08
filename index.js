@@ -49,7 +49,7 @@ app.post('/post', urlencodedParser, function(request, response){
 
 
 app.post('/test', urlencodedParser, function(request, response){
-  // 输出 JSON 格式
+    // 输出 JSON 格式
     var file = path.join(__dirname, 'static/data.json'); //文件路径，__dirname为当前运行js文件的目录
     //var file = 'f:\\nodejs\\data\\test.json'; //也可以用这种方式指定路径
 
@@ -72,6 +72,20 @@ app.post('/test', urlencodedParser, function(request, response){
             };
             //  response.end(JSON.stringify(data));
             response.json(datas);
+        }
+    });
+});
+app.post('/citys', urlencodedParser, function(request, response){
+     // 输出 JSON 格式
+    var file = path.join(__dirname, 'static/citys.json'); //文件路径，__dirname为当前运行js文件的目录
+    //var file = 'f:\\nodejs\\data\\test.json'; //也可以用这种方式指定路径
+
+    //读取json文件
+    fs.readFile(file, 'utf-8', function(err, data) {
+        if (err) {
+            response.json('文件读取失败');
+        } else {
+            response.json(eval(data));
         }
     });
 });
