@@ -107,6 +107,18 @@ app.post('/test1', urlencodedParser, function(request, response){
   //  response.end(JSON.stringify(data));
    response.json(data);
 });
+app.get('/video', urlencodedParser, function(request, response){
+  // 输出 JSON 格式
+  response.writeHead(200, {'Content-Type': 'video/mp4'});
+  const src = fs.createReadStream('static/test.mp4');
+  src.pipe(response);;
+});
+app.get('/audio', urlencodedParser, function(request, response){
+  // 输出 JSON 格式
+  response.writeHead(200, {'Content-Type': 'audio/mp3'});
+  const src = fs.createReadStream('static/test.mp3');
+  src.pipe(response);
+});
 
 app.post('/test3', urlencodedParser, function(request, response){
   // 输出 JSON 格式
